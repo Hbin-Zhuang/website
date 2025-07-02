@@ -17,5 +17,5 @@ export const projectData: ProjectData = [
         href: 'https://github.com/Hbin-Zhuang',
       },
     ],
-  }
+  },
 ]

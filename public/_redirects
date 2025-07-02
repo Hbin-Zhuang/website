@@ -1,0 +1,12 @@
+# Cloudflare Pages 重定向配置
+# 处理 SPA 路由和静态资源
+
+# 404 页面重定向
+/* /404.html 404
+
+# RSS feed 重定向
+/rss /rss.xml 200
+
+# 确保静态资源正确访问
+/favicon.svg /favicon.svg 200
+/robots.txt /robots.txt 200

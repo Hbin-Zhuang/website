@@ -9,7 +9,7 @@ interface Post {
 }
 
 withDefaults(defineProps<{
-  list: Post[]
+  list?: Post[]
 }>(), {
   list: () => [],
 })

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import siteConfig from '@/site-config'
-import { getLinkTarget } from '@/utils/link'
 import { useWindowScroll } from '@vueuse/core'
 import { computed, onMounted, ref, unref } from 'vue'
+import siteConfig from '@/site-config'
+import { getLinkTarget } from '@/utils/link'
 import ThemeToggle from './ThemeToggle.vue'
 
 const navLinks = siteConfig.header.navLinks || []
