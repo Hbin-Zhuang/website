@@ -15,10 +15,10 @@ A minimal, SEO-friendly portfolio and blog theme for Astro, supports Vue and Uno
 - SEO-friendly.
 - Light / Dark Theme.
 - Markdown support.
-- <a target="_blank" href="https://mdxjs.com/">MDX</a> (components in your markdown) support.
-- <a target="_blank" href="https://vuejs.org/">Vue</a> SFC component support.
-- Auto generated sitemap and RSS Feed <a target="_blank" href="https://vueuse.org/">VueUse</a> & <a target="_blank" href="https://lodash.com/">Lodash</a> support.
-- Use the <a target="_blank" href="https://unocss.dev/">UnoCSS</a> for style, it's fast.
+- `<a target="_blank" href="https://mdxjs.com/">`MDX`</a>` (components in your markdown) support.
+- `<a target="_blank" href="https://vuejs.org/">`Vue`</a>` SFC component support.
+- Auto generated sitemap and RSS Feed `<a target="_blank" href="https://vueuse.org/">`VueUse`</a>` & `<a target="_blank" href="https://lodash.com/">`Lodash`</a>` support.
+- Use the `<a target="_blank" href="https://unocss.dev/">`UnoCSS`</a>` for style, it's fast.
 
 ## Lighthouse Performance
 
@@ -26,11 +26,13 @@ A minimal, SEO-friendly portfolio and blog theme for Astro, supports Vue and Uno
 
 ## Quick Start
 
-[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kieranwv/astro-theme-vitesse)
+[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/hbin-zhuang/website)
 
 Click this button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
 
-If you  just want to develop locally, you can [create a repo](https://github.com/kieranwv/astro-theme-vitesse/generate) from this template on GitHub.
+### Start from this template
+
+If you just want to develop locally, you can [create a repo](https://github.com/hbin-zhuang/website/generate) from this template on GitHub.
 
 ## Usage
 
