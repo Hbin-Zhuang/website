@@ -7,7 +7,8 @@
   "author": "Kieran Wong <kieranwme@gmail.com> (https://github.com/kieranwv/)",
   "license": "MIT",
   "keywords": [
-    "kieranwong9865",
+    "hbin",
+    "hibson",
     "astro-theme-vitesse",
     "astro",
     "blog",
@@ -24,7 +25,10 @@
     "preview": "astro preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "release": "bumpp"
+    "release": "bumpp",
+    "new-post": "node scripts/new-post.js",
+    "generate-tags": "node scripts/generate-tags.js",
+    "process-fragments": "node scripts/process-fragments.js"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.4",
@@ -32,7 +36,9 @@
     "@astrojs/sitemap": "^3.3.0",
     "@astrojs/vue": "^5.0.10",
     "@unocss/reset": "66.1.0-beta.11",
+    "@vue/compiler-sfc": "^3.5.17",
     "astro": "^5.6.2",
+    "json-schema-traverse": "^1.0.0",
     "nprogress": "^0.2.0",
     "unocss": "66.1.0-beta.11",
     "vite": "^6.0.0",

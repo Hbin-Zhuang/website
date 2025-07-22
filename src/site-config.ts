@@ -1,8 +1,10 @@
 export const siteConfig = {
   author: 'HBin Zhuang',
   title: 'Hibson',
-  subtitle: 'A front-end engineer exploring, building, and defining myself in the world of code.',
-  description: 'HBin Zhuang\'s portfolio and blog, focusing on Vue, Micro-Frontends, Low-Code, and AI technologies.',
+  subtitle:
+    'A front-end engineer exploring, building, and defining myself in the world of code.',
+  description:
+    'HBin Zhuang\'s portfolio and blog, focusing on Vue, Micro-Frontends, Low-Code, and AI technologies.',
   image: {
     src: '/hero.jpg',
     alt: 'Website Main Image',

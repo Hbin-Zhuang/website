@@ -39,7 +39,7 @@ Code Snippet:
 ```ts
 export const data = {
   name: 'Name',
-  value: 'Value'
+  value: 'Value',
 }
 
 export function getName() {

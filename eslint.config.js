@@ -7,5 +7,11 @@ export default antfu({
   formatters: {
     astro: true,
     css: true,
+    html: true,
+    markdown: true,
+  },
+  rules: {
+    'eol-last': ['error', 'always'],
+    'style/eol-last': ['error', 'always'], // 针对 @stylistic/eslint-plugin
   },
 })
