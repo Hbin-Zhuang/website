@@ -1,113 +1,159 @@
-# Vitesse theme for Astro
+# My Personal Website
 
-A minimal, SEO-friendly portfolio and blog theme for Astro, supports Vue and UnoCSS.
+🌐 **Live Site**: [hibson.tech](https://hibson.tech)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/0624323a-339f-48da-8b28-03037d664c40/deploy-status)](https://app.netlify.com/sites/astro-theme-vitesse/deploys)
+## 🛠️ Tech Stack
 
-## Preview
+- **Framework**: [Astro](https://astro.build/) - The web framework for content-driven websites
+- **UI Library**: [Vue 3](https://vuejs.org/) - Progressive JavaScript framework
+- **Styling**: [UnoCSS](https://unocss.dev/) - Instant on-demand atomic CSS engine
+- **Content**: [MDX](https://mdxjs.com/) - Markdown with JSX components
+- **Utilities**: [VueUse](https://vueuse.org/) - Collection of Vue composition utilities
+- **Icons**: [Iconify](https://iconify.design/) - Unified icon framework
+- **Deployment**: [Netlify](https://netlify.com/) - Modern web deployment platform
 
-![Preview Image](./public/preview.jpg)
+## 🚀 Quick Start
 
-## Features
+### Prerequisites
 
-- 100 / 100 Lighthouse performance.
-- Responsive.
-- SEO-friendly.
-- Light / Dark Theme.
-- Markdown support.
-- `<a target="_blank" href="https://mdxjs.com/">`MDX`</a>` (components in your markdown) support.
-- `<a target="_blank" href="https://vuejs.org/">`Vue`</a>` SFC component support.
-- Auto generated sitemap and RSS Feed `<a target="_blank" href="https://vueuse.org/">`VueUse`</a>` & `<a target="_blank" href="https://lodash.com/">`Lodash`</a>` support.
-- Use the `<a target="_blank" href="https://unocss.dev/">`UnoCSS`</a>` for style, it's fast.
+- Node.js 18+ (recommended: use [nvm](https://github.com/nvm-sh/nvm))
+- npm 10+ (comes with Node.js)
 
-## Lighthouse Performance
+### Local Development
 
-![Lighthouse Performance Image](./public/lighthouse.jpg)
+1. **Clone the repository**
 
-## Quick Start
+   ```bash
+   git clone https://github.com/hbin-zhuang/website.git
+   cd website
+   ```
 
-[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/hbin-zhuang/website)
+2. **Install dependencies**
 
-Click this button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
+   ```bash
+   npm install
+   ```
 
-### Start from this template
+3. **Start development server**
 
-If you just want to develop locally, you can [create a repo](https://github.com/hbin-zhuang/website/generate) from this template on GitHub.
+   ```bash
+   npm run dev
+   ```
 
-## Usage
+   Visit [http://localhost:1977](http://localhost:1977) to see the site.
 
-First, install the dependencies.
-
-```bash
-npm install
-```
-
-Just run and visit http://localhost:1977.
-
-```bash
-npm run dev
-```
-
-> Node.js version 18 or higher is required for this project.
-
-To build the App, you can run:
+### Build for Production
 
 ```bash
 npm run build
 ```
 
-You will then see the `dist` folder generated for publishing, which you can preview locally with the following command.
+Preview the production build:
 
 ```bash
 npm run preview
 ```
 
-## Use pnpm / yarn
+## 📝 Content Management
 
-If you want to use pnpm or yarn as a package management tool, please refer to the following steps.
+### Creating Blog Posts
 
-> If `preinstall` exists in `scripts`, remove it first.
+Use the built-in script to create new blog posts:
 
-### pnpm
-
-Replace `"pre-commit": "npx lint-staged"` in package.json with `"pre-commit": "pnpm lint-staged"`.
-
-And replace `"*": "npm run lint:fix"` with `"*": "pnpm lint:fix"`.
-
-Like this:
-
-```json
-{
-  // ...
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
-  },
-  "lint-staged": {
-    "*": "pnpm lint:fix"
-  }
-}
+```bash
+npm run new-post
 ```
 
-### yarn
+This will create a new markdown file with proper frontmatter in the `src/content/blog/` directory.
 
-Replace `"pre-commit": "npx lint-staged"` in package.json with `"pre-commit": "yarn lint-staged"`.
+### Managing Tags
 
-And replace `"*": "npm run lint:fix"` with `"*": "yarn lint:fix"`.
+Generate tag pages automatically:
 
-Like this:
-
-```json
-{
-  // ...
-  "simple-git-hooks": {
-    "pre-commit": "yarn lint-staged"
-  },
-  "lint-staged": {
-    "*": "yarn lint:fix"
-  }
-}
+```bash
+npm run generate-tags
 ```
 
-## License
+### Processing Content Fragments
 
-[MIT License](./LICENSE) © 2024 [Kieran Wang](https://github.com/kieranwv/)
+Process and optimize content fragments:
+
+```bash
+npm run process-fragments
+```
+
+## 🎨 Customization
+
+### Site Configuration
+
+Edit `src/site-config.ts` to customize:
+
+- Personal information
+- Social links
+- Navigation menu
+- Footer content
+
+### Styling
+
+The site uses UnoCSS for styling. You can:
+
+- Modify existing styles in component files
+- Add custom CSS in `src/styles/`
+- Configure UnoCSS in `uno.config.ts`
+
+### Theme Colors
+
+The site supports automatic dark/light theme switching with custom favicons:
+
+- Light theme: `/favicon.svg`
+- Dark theme: `/favicon-dark.png`
+
+## 🔧 Development Scripts
+
+| Command                     | Description               |
+| --------------------------- | ------------------------- |
+| `npm run dev`               | Start development server  |
+| `npm run build`             | Build for production      |
+| `npm run preview`           | Preview production build  |
+| `npm run lint`              | Run ESLint                |
+| `npm run lint:fix`          | Fix ESLint issues         |
+| `npm run new-post`          | Create new blog post      |
+| `npm run generate-tags`     | Generate tag pages        |
+| `npm run process-fragments` | Process content fragments |
+| `npm run release`           | Release new version       |
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # Vue components
+│   ├── Header.vue      # Site header with navigation
+│   ├── ThemeToggle.vue # Dark/light theme switcher
+│   └── ...
+├── content/            # Content collections
+│   ├── blog/          # Blog posts (Markdown/MDX)
+│   └── projects/      # Project showcases
+├── layouts/           # Astro layouts
+├── pages/             # Astro pages and API routes
+├── styles/            # Global styles
+├── utils/             # Utility functions
+└── site-config.ts     # Site configuration
+```
+
+## 🚀 Deployment
+
+This site is deployed on [Netlify](https://netlify.com) with automatic deployments from the main branch.
+
+### Deploy to Netlify
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/hbin-zhuang/website)
+
+### Other Deployment Options
+
+- **Vercel**: Connect your GitHub repo to Vercel
+- **GitHub Pages**: Use GitHub Actions for deployment
+- **Cloudflare Pages**: Connect your repo to Cloudflare Pages
+
+---
+
+Built with ❤️ using [Astro](https://astro.build), [Vue](https://vuejs.org), and [UnoCSS](https://unocss.dev)
