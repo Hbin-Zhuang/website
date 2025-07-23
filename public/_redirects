@@ -9,4 +9,5 @@
 
 # 确保静态资源正确访问
 /favicon.svg /favicon.svg 200
+/favicon-dark.png /favicon-dark.png 200
 /robots.txt /robots.txt 200

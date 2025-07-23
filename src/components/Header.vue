@@ -1,9 +1,18 @@
 <script lang="ts" setup>
-import { useWindowScroll } from '@vueuse/core'
-import { computed, onMounted, ref, unref } from 'vue'
+import { useDark, useWindowScroll } from '@vueuse/core'
+import { computed, onMounted, ref, unref, watchEffect } from 'vue'
 import siteConfig from '@/site-config'
 import { getLinkTarget } from '@/utils/link'
 import ThemeToggle from './ThemeToggle.vue'
+
+// 动态 logo 状态
+const logoSrc = ref('')
+const isDark = useDark()
+
+// 监听主题变化
+watchEffect(() => {
+  logoSrc.value = isDark.value ? '/favicon-dark.png' : '/favicon.svg'
+})
 
 const navLinks = siteConfig.header.navLinks || []
 
@@ -27,6 +36,12 @@ const { y: scroll } = useWindowScroll()
 const oldScroll = ref(unref(scroll))
 
 onMounted(() => {
+  // 强制更新 logo src，解决 SSR hydration 问题
+  const logoImg = document.querySelector('a[aria-label="Header Logo Image"] img') as HTMLImageElement
+  if (logoImg) {
+    logoImg.src = logoSrc.value
+  }
+
   const navMask = document.querySelector('.nav-drawer-mask') as HTMLElement
 
   navMask?.addEventListener('touchmove', (event) => {
@@ -85,7 +100,7 @@ function toggleNavDrawer() {
         <img
           width="32"
           height="32"
-          :src="siteConfig.header.logo.src"
+          :src="logoSrc"
           :alt="siteConfig.header.logo.alt"
         >
       </a>
