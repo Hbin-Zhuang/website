@@ -4,8 +4,12 @@ import { type CollectionPosts } from '@/types'
 import { getPosts } from '@/utils/posts'
 
 export async function getStaticPaths() {
-  const posts = await getPosts()
-  return posts.map((post) => {
+  // 获取所有集合的文章
+  const blogPosts = await getPosts(undefined, 'blog')
+  const notePosts = await getPosts(undefined, 'note')
+  const allPosts = [...blogPosts, ...notePosts]
+  
+  return allPosts.map((post) => {
     return {
       params: { slug: post.slug },
       props: {
@@ -43,5 +47,10 @@ function getDate(date: string) {
       )
     }
     <Content />
+    
+    <!-- 文章署名 -->
+    <div style="border-top: 1px solid #e5e7eb; margin-top: 2rem; padding-top: 1rem;">
+      <small style="opacity: 0.5; font-size: 0.75rem;">_HBin Zhuang_ 📝</small>
+    </div>
   </article>
 </BaseLayout>

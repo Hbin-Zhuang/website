@@ -10,12 +10,21 @@ export function sortPostsByDate(
   )
 }
 
-export async function getPosts(path?: string, collection: PostKey = 'blog') {
+export async function getPosts(path?: string, collection?: PostKey) {
+  // 根据路径自动确定集合类型
+  if (!collection) {
+    if (path === 'notes') {
+      collection = 'note'
+    } else {
+      collection = 'blog'
+    }
+  }
+
   return (
     await getCollection(collection, (post) => {
       return (
         (import.meta.env.PROD ? post.data.draft !== true : true)
-        && (path ? post.slug.includes(path) : true)
+        && (path && path !== 'notes' ? post.slug.includes(path) : true)
       )
     })
   ).sort(sortPostsByDate)

@@ -142,7 +142,7 @@ src/
 
 ## 🚀 Deployment
 
-This site is deployed on [Netlify](https://netlify.com) with automatic deployments from the main branch.
+This site is deployed on [Cloudflare](https://cloudflare.com) with automatic deployments from the main branch.
 
 ### Deploy to Netlify
 
