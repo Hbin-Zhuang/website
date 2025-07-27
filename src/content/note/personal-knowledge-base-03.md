@@ -1,5 +1,5 @@
 ---
-title: "个人开发知识库（151-171）"
+title: "个人开发知识库（143-163）"
 description: "Element UI components, ES6 modules, file uploads, Vue communication patterns, and PWA development"
 date: "2022-04-18"
 lang: "zh-CN"
@@ -9,7 +9,7 @@ tags: ["Element-UI", "ES6", "File-Upload", "Vue", "Components", "PWA", "Frontend
 featured: true
 ---
 
-## 151. el-cascader 懒加载回显问题
+## 143. el-cascader 懒加载回显问题
 
 关于 el-cascader 懒加载（动态加载） 编辑页回显时，有时会回显不出数据的问题，这通常与组件的即时更新机制有关。此问题在 el-tree、el-table、el-select 等组件中也可能出现。
 
@@ -41,7 +41,7 @@ featured: true
 
 ![深度选择器](../../assets/images/WEBRESOURCEa758c67196483aa7f792c721fbab2ec1截图.png)
 
-## 152. 对象属性初始化问题
+## 144. 对象属性初始化问题
 
 在 Vue 中，如果一个对象的属性在 `data` 中只定义而未赋初始值（如 `null` 或 `undefined`），那么在后续操作（如新增表单）中，该字段可能不会被包含在对象中，也不会成为响应式属性。
 
@@ -74,7 +74,7 @@ created() {
 }
 ```
 
-## 153. ES6 模块化：export vs export default
+## 145. ES6 模块化：export vs export default
 
 `export` 和 `export default` 是 ES6 模块中用于导出功能的两种方式，主要区别如下：
 
@@ -112,7 +112,7 @@ import customMultiply, { PI, sum } from './utils.js';
 
 ![export 区别](../../assets/images/WEBRESOURCEf711951346d85e0d7a3e9a8b6c7d014f截图.png)
 
-## 154. el-upload 自定义上传
+## 146. el-upload 自定义上传
 
 通过 `http-request` 属性可以覆盖 `el-upload` 的默认上传行为。将 `action` 属性置空，并提供一个自定义的上传方法。
 
@@ -147,7 +147,7 @@ methods: {
 }
 ```
 
-## 155. 文件上传 SDK 方案
+## 147. 文件上传 SDK 方案
 
 使用封装好的 SDK（如 `sadais-upload`）进行文件上传，可以简化流程并提高安全性。通常 SDK 会处理与多种云存储（OSS）的交互。
 
@@ -167,7 +167,7 @@ methods: {
 最终，SDK 会返回上传成功后的文件访问 URL。
 ![上传结果](../../assets/images/WEBRESOURCEcdb6472fe87724e55183d23189695b9b截图.png)
 
-## 156. beforeDestroy 不生效问题
+## 148. beforeDestroy 不生效问题
 
 在 Vue 组件中，销毁前的生命周期钩子是 `beforeDestroy`。如果写错名字（如 `beforeDestory`），该钩子将不会被触发，导致内存泄漏。
 
@@ -190,7 +190,7 @@ export default {
 
 **注意**：在 Vue 3 中，此钩子已重命名为 `beforeUnmount`。
 
-## 157. JSON 异常处理
+## 149. JSON 异常处理
 
 使用 `JSON.parse()` 或 `JSON.stringify()` 时，最好用 `try...catch` 包裹，以防止因非法格式或循环引用导致的程序崩溃。
 
@@ -211,7 +211,7 @@ function safeJsonParse(str) {
 
 ![JSON 异常处理](../../assets/images/WEBRESOURCEb4eb953b6c7994a87ec45ed5eca3cef3截图.png)
 
-## 158. 数组筛选方法
+## 150. 数组筛选方法
 
 `filter` 方法是数组筛选最常用的工具，可以结合 `indexOf`、`includes` 或 `some` 来实现不同场景的筛选。
 
@@ -228,7 +228,7 @@ const difference = arr1.filter(item => !arr2.includes(item))
 // -> [1, 2]
 ```
 
-## 159. html2canvas 跨域问题解决
+## 151. html2canvas 跨域问题解决
 
 使用 `html2canvas` 插件生成包含跨域图片的截图时，会遇到安全限制。
 
@@ -256,7 +256,7 @@ async function capture() {
 
 ![动态 ref](../../assets/images/WEBRESOURCEadbb1718b99cc29339959f0fdf802f98截图.png)
 
-## 160. el-input number 类型样式处理
+## 152. el-input number 类型样式处理
 
 `el-input` 设置 `type="number"` 时，浏览器会默认显示一个上下箭头（spinner）。可以使用 CSS 去除它。
 
@@ -275,7 +275,7 @@ async function capture() {
 }
 ```
 
-## 161. JavaScript 正则校验中文字符
+## 153. JavaScript 正则校验中文字符
 
 使用 Unicode 范围可以精确匹配中文字符。
 
@@ -294,7 +294,7 @@ console.log(containsChinese('hello 你好')) // true
 
 ![中文正则](../../assets/images/WEBRESOURCEe0da270bf35a7f6ce004e13f2b36df53截图.png)
 
-## 162. 数值处理：toFixed vs parseInt
+## 154. 数值处理：toFixed vs parseInt
 
 `toFixed()` 和 `parseInt()` 都可以用于取整，但行为不同：
 
@@ -312,7 +312,7 @@ Math.round(num) // 4   (四舍五入，数字)
 Math.floor(num) // 3   (向下取整，数字)
 ```
 
-## 163. 防抖与节流的区别
+## 155. 防抖与节流的区别
 
 - **防抖 (Debounce)**：在事件触发后等待一个固定的时间，如果这段时间内没有再次触发，则执行函数。如果连续触发，则重新计时。**核心：只执行最后一次。**
   - **场景**：搜索框输入、窗口大小调整。
@@ -321,7 +321,7 @@ Math.floor(num) // 3   (向下取整，数字)
 
 ![防抖节流图解](../../assets/images/WEBRESOURCE09e576b2bad8cd23d8a164699d80d935截图.png)
 
-## 164. el-form validate 回调函数问题
+## 156. el-form validate 回调函数问题
 
 `el-form` 的 `validate()` 方法返回一个 Promise，也可以接收一个回调函数。如果验证不通过，回调函数中的 `valid` 参数为 `false`，Promise 会被 `reject`。
 
@@ -346,7 +346,7 @@ async submitForm() {
 }
 ```
 
-## 165. el-menu collapse 属性
+## 157. el-menu collapse 属性
 
 `el-menu` 的 `collapse` 属性用于控制菜单的折叠状态。
 
@@ -355,7 +355,7 @@ async submitForm() {
 
 ![collapse 效果](../../assets/images/WEBRESOURCE930323c61631fb21cc1804c2e98c15f5截图.png)
 
-## 166. 静态路由重定向
+## 158. 静态路由重定向
 
 在 Vue Router 中，`redirect` 属性用于配置路由重定向。
 
@@ -380,7 +380,7 @@ const routes = [
 
 ![路由重定向](../../assets/images/WEBRESOURCEf474a997fbdc31a68130037c9fe2736d截图.png)
 
-## 167. 绝对定位与 Flexbox 结合
+## 159. 绝对定位与 Flexbox 结合
 
 `position: absolute` 和 `display: flex` 可以结合使用，创造出强大的布局效果。例如，实现一个相对于父元素完全居中的遮罩层。
 
@@ -404,7 +404,7 @@ const routes = [
 
 ![绝对定位 flex](../../assets/images/WEBRESOURCE9113874b772b331e9b4e62f7817d4cef截图.png)
 
-## 168. 数组 map 方法的使用
+## 160. 数组 map 方法的使用
 
 `map()` 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。它不会改变原数组。
 
@@ -423,7 +423,7 @@ const userNames = users.map(user => user.name)
 
 ![map 用法](../../assets/images/WEBRESOURCE09a26a9799b58c027bfef42de052bef2截图.png)
 
-## 169. 常见 Web 缩写
+## 161. 常见 Web 缩写
 
 - **CSR**: Client-Side Rendering (客户端渲染)
 - **SSR**: Server-Side Rendering (服务端渲染)
@@ -432,7 +432,7 @@ const userNames = users.map(user => user.name)
 - **CORS**: Cross-Origin Resource Sharing (跨域资源共享)
 - **CSRF**: Cross-Site Request Forgery (跨站请求伪造)
 
-## 170. node-sass 与 sass-loader 版本问题
+## 162. node-sass 与 sass-loader 版本问题
 
 `node-sass`、`sass-loader` 和 `Node.js` 之间存在严格的版本对应关系，版本不匹配是项目启动失败的常见原因。
 
@@ -452,7 +452,7 @@ const userNames = users.map(user => user.name)
 
 ![版本对应表](../../assets/images/WEBRESOURCE5d8f2206b3df2a8ef186f69c5928faf7截图.png)
 
-## 171. PWA (渐进式 Web 应用)
+## 163. PWA (渐进式 Web 应用)
 
 PWA (Progressive Web Application) 是一系列技术的集合，旨在让 Web 应用拥有接近原生应用的体验。
 

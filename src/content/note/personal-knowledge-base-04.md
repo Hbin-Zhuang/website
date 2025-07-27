@@ -1,5 +1,5 @@
 ---
-title: "个人开发知识库（172-183）"
+title: "个人开发知识库（164-183）"
 description: "SSR with Nuxt.js, Git workflows, mini-programs, CSS layouts, and advanced JavaScript concepts"
 date: "2022-08-07"
 lang: "zh-CN"
@@ -9,7 +9,7 @@ tags: ["SSR", "Nuxt.js", "Git", "Mini-Programs", "CSS", "JavaScript", "Frontend"
 featured: true
 ---
 
-## 172. 服务端渲染 (SSR) 与 Nuxt.js
+## 164. 服务端渲染 (SSR) 与 Nuxt.js
 
 - **CSR (Client-Side Rendering)**：客户端渲染，如常规的 Vue.js/React.js 应用。浏览器下载 JS 文件后在本地执行，渲染出页面。
 - **SSR (Server-Side Rendering)**：服务端渲染，如 Nuxt.js。服务器直接生成完整的 HTML 页面返回给浏览器，浏览器可以直接显示，无需等待 JS 执行。

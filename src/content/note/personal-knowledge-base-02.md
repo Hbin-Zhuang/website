@@ -1,5 +1,5 @@
 ---
-title: "个人开发知识库（51-150）"
+title: "个人开发知识库（51-142）"
 description: "Advanced JavaScript concepts, Vue.js techniques, mini-program development, and frontend engineering practices"
 date: "2021-12-23"
 lang: "zh-CN"

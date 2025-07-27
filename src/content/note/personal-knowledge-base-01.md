@@ -942,13 +942,46 @@ uni.setStorageSync('userInfo', _userInfo)
 
 ![本地存储](../../assets/images/WEBRESOURCE4b38aed918c745adf16144625c8e71a4截图.png)
 
-## 34. Watch 只会监听一次
+## 34. Watch 只会监听一次 ?
 
 ![Watch 监听1](../../assets/images/WEBRESOURCEd82d0263cf184b77d0648b3d35f5014f截图.png)
 
 ![Watch 监听2](../../assets/images/WEBRESOURCE76fc3b4951397bb11605b3e2aad1d5fe截图.png)
 
 ![Watch 监听3](../../assets/images/WEBRESOURCEb76afa75044d62022fe6ee76ffb6f323截图.png)
+
+**问题分析：**
+子组件在 `data()` 中直接将 `props` 的值赋给本地数据，这种方式只在组件初始化时执行一次。当父组件通过 `watch` 更新 `props` 时，子组件的 `data` 不会自动响应变化。
+
+**原因：**
+
+- `data()` 只在组件创建时调用一次，后续 `props` 变化不会重新执行
+- Vue 的响应式系统不会自动同步 `props` 到 `data` 中的副本
+
+**推荐解决方案：**
+
+1. 直接使用 `props`，无需在 `data` 中创建副本
+2. 使用 `computed` 计算属性处理 `props` 数据
+3. 使用 `watch` 监听 `props` 变化并手动更新本地数据
+
+```javascript
+// 方法一：直接使用 props（推荐）
+// template: {{ propsValue }}
+
+// 方法二：使用 computed（推荐）
+computed: {
+  localValue() {
+    return this.propsValue
+  }
+}
+
+// 方法三：使用 watch 同步数据
+watch: {
+  propsValue(newVal) {
+    this.localValue = newVal
+  }
+}
+```
 
 ## 35. 数组方法对比
 
