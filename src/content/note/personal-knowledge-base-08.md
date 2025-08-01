@@ -598,6 +598,9 @@ yarn add --dev core-js@3
 3. **腾讯 无界**
 4. **京东 micro-app**
 5. **module-federation 模块联邦**
+6. **Web Components**
+7. **ESM**
+8. **领域驱动的微前端设计（DDD思想指导下拆分粒度）**
 
 ## 327. 数组优化
 
