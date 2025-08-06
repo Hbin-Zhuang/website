@@ -21,9 +21,17 @@ function getDate(date: string) {
   return new Date(date).toISOString()
 }
 
+function getPostDate(post: Post | undefined) {
+  if (!post || !post.data) return null
+  return post.data.date || post.data.pubDate
+}
+
 function getHref(post: Post) {
   if (post.data.redirect)
     return post.data.redirect
+  // Check if it's a talks post
+  if (post.collection === 'talks')
+    return `/talks/${post.slug}`
   return `/posts/${post.slug}`
 }
 
@@ -62,7 +70,7 @@ function getLanguageLabel(lang?: string) {
     </template>
     <li v-for="(post, index) in list" :key="post.data.title" mb-8>
       <div
-        v-if="!isSameYear(post.data.date, list[index - 1]?.data.date)"
+        v-if="!isSameYear(getPostDate(post), getPostDate(list[index - 1]))"
         select-none
         relative
         h18
@@ -78,7 +86,7 @@ function getLanguageLabel(lang?: string) {
           absolute
           top--0.2em
         >
-          {{ getYear(post.data.date) }}
+          {{ getYear(getPostDate(post)) }}
         </span>
       </div>
       <a
@@ -115,8 +123,8 @@ function getLanguageLabel(lang?: string) {
               text-base
               i-ri:film-line
             />
-            <time v-if="post.data.date" :datetime="getDate(post.data.date)">{{
-              post.data.date.split(",")[0]
+            <time v-if="getPostDate(post)" :datetime="getDate(getPostDate(post))">{{
+              getPostDate(post)?.split(",")[0]
             }}</time>
             <span v-if="post.data.duration">· {{ post.data.duration }}</span>
             <span v-if="post.data.tag">· {{ post.data.tag }}</span>

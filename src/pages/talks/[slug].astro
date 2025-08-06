@@ -1,0 +1,77 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+export async function getStaticPaths() {
+  const talks = await getCollection('talks')
+  return talks.map((talk) => ({
+    params: { slug: talk.slug },
+    props: { talk },
+  }))
+}
+
+type Props = {
+  talk: CollectionEntry<'talks'>
+}
+
+const { talk } = Astro.props as Props
+const { Content } = await talk.render()
+const { title, description, event, location, videoUrl, slidesUrl, pubDate, tags } = talk.data
+---
+
+<BaseLayout {title} {description}>
+  <article class="prose max-w-none">
+    <header>
+      <h1 class="text-4xl font-bold mb-2">{title}</h1>
+      <div class="text-gray-500 dark:text-gray-400 mb-4">
+        <time datetime={new Date(pubDate).toISOString()}>
+          {pubDate}
+        </time>
+        <span> · {event} @ {location}</span>
+      </div>
+      
+      <!-- 标签展示 -->
+      {tags && tags.length > 0 && (
+        <div class="flex gap-2 flex-wrap mt-2">
+          {tags.map(tag => (
+            <span class="text-sm px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <!-- 只有当存在视频或幻灯片链接时才显示这个部分 -->
+    {(videoUrl || slidesUrl) && (
+      <div class="flex gap-4 my-6 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+        {videoUrl && (
+          <a 
+            href={videoUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            <span class="i-ri-video-line"></span>
+            观看视频
+          </a>
+        )}
+        {slidesUrl && (
+          <a 
+            href={slidesUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            <span class="i-ri-slideshow-line"></span>
+            查看幻灯片
+          </a>
+        )}
+      </div>
+    )}
+
+    <div class="prose max-w-none">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
