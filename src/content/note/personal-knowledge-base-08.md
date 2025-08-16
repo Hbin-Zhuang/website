@@ -771,3 +771,64 @@ Astro 使用有个问题，就是默认使用的是 SSR（client:load 指令）�
 **解决方案**：强制在客户端重新设置 src 属性。设置 img 的 src，而不是设置 logoSrc。
 
 ![Astro SSR 问题解决方案](../../assets/images/WEBRESOURCE_astro_ssr_issue.png)
+
+## 338. HTTP、SCP、SFTP 文件传输对比
+
+**核心区别：**
+
+- **HTTP**：网页浏览式传输，基于 TCP，明文/SSL 加密
+- **SCP**：命令行式安全传输，基于 SSH，加密传输
+- **SFTP**：交互式安全传输，基于 SSH，加密传输
+
+**使用场景对比：**
+
+| 协议       | 适用场景                 | 安全性     | 特点                       |
+| ---------- | ------------------------ | ---------- | -------------------------- |
+| HTTP/HTTPS | 网站用户上传、API接口    | ⭐⭐⭐⭐   | 浏览器原生支持，简单易用   |
+| SCP        | 自动化部署、服务器间传输 | ⭐⭐⭐⭐⭐ | 命令行操作，速度快         |
+| SFTP       | 交互式文件管理           | ⭐⭐⭐⭐⭐ | 功能丰富，支持图形化客户端 |
+
+**快速使用示例：**
+
+```bash
+# HTTP (表单上传)
+<form action="/upload" method="post" enctype="multipart/form-data">
+
+# SCP (命令行传输)
+scp local-file.txt user@server.com:/remote/path/
+
+# SFTP (交互式)
+sftp user@server.com
+sftp> put local-file.txt
+```
+
+**Node.js 依赖包：**
+
+```javascript
+// SCP - 使用 scp2
+npm install scp2
+
+const scpClient = require('scp2');
+scpClient.scp('local.txt', {
+  host: 'server.com',
+  username: 'user',
+  password: 'pass',
+  path: '/remote/file.txt'
+}, callback);
+
+// SFTP - 使用 ssh2-sftp-client
+npm install ssh2-sftp-client
+
+const SFTPClient = require('ssh2-sftp-client');
+const sftp = new SFTPClient();
+
+await sftp.connect({
+  host: 'server.com',
+  username: 'user',
+  password: 'pass'
+});
+await sftp.put('local.txt', '/remote/file.txt');
+await sftp.end();
+```
+
+**一句话总结：** HTTP 适合网页上传，SCP 适合命令行自动化，SFTP 适合交互式文件管理。
